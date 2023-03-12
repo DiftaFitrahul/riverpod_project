@@ -12,14 +12,13 @@ class UserProvider extends StateNotifier<List<User>> {
     temp.add(User(name: name, description: description, age: age));
     final newList = state.toList()
       ..add(User(name: name, description: description, age: age));
-    state = [...temp];
+    state = newList;
     // state = [...state, User()]
   }
 
   void deleteUser({required int index}) {
-    temp.removeAt(index);
-    print(temp);
-    state = temp;
+    final newList = state.toList()..removeAt(index);
+    state = newList;
   }
 }
 
