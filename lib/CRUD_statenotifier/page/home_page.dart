@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_project/page/add_user.dart';
-import 'package:riverpod_project/provider/user_provider.dart';
+import '../page/add_user.dart';
+import '../provider/user_provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

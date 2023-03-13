@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_project/provider/user_provider.dart';
+
+import '../provider/user_provider.dart';
 
 class AddUser extends StatefulWidget {
   const AddUser({super.key});
