@@ -52,6 +52,14 @@ class PageProvider extends StateNotifier<List<Page>> {
   }
 }
 
-final pageStateProvider = StateNotifierProvider<PageProvider, List<Page>>(
+final allPageStateProvider = StateNotifierProvider<PageProvider, List<Page>>(
   (_) => PageProvider(),
+);
+
+final favoritePageProvider = Provider<Iterable<Page>>(
+  (ref) => ref.watch(allPageStateProvider).where((page) => page.isFavorite),
+);
+
+final notFavouritePageProvider = Provider<Iterable<Page>>(
+  (ref) => ref.watch(allPageStateProvider).where((page) => !page.isFavorite),
 );

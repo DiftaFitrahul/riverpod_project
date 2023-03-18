@@ -34,7 +34,7 @@ class HomePageApp6 extends StatelessWidget {
               },
             ),
             Consumer(builder: (context, ref, child) {
-              final listUser = ref.watch(pageStateProvider);
+              final listUser = ref.watch(allPageStateProvider);
               final filter = ref.watch(chooseProvider);
               List listUserChoose = [];
               if (filter == 'all') {
@@ -58,7 +58,7 @@ class HomePageApp6 extends StatelessWidget {
                         trailing: IconButton(
                             onPressed: () {
                               ref
-                                  .read(pageStateProvider.notifier)
+                                  .read(allPageStateProvider.notifier)
                                   .changeFavorite(listUserChoose[index].id);
                             },
                             icon: listUserChoose[index].isFavorite
@@ -75,4 +75,9 @@ class HomePageApp6 extends StatelessWidget {
       )),
     );
   }
+
+
 }
+
+
+
