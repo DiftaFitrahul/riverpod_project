@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_project/app-6-FILTER-StateNotifier/Page/listview_page_component.dart';
 import 'package:riverpod_project/app-6-FILTER-StateNotifier/provider/drop_down_list.dart';
 import 'package:riverpod_project/app-6-FILTER-StateNotifier/provider/page_provider.dart';
 
@@ -34,50 +35,19 @@ class HomePageApp6 extends StatelessWidget {
               },
             ),
             Consumer(builder: (context, ref, child) {
-              final listUser = ref.watch(allPageStateProvider);
-              final filter = ref.watch(chooseProvider);
-              List listUserChoose = [];
-              if (filter == 'all') {
-                listUserChoose = listUser;
-              } else if (filter == 'favourites') {
-                listUserChoose =
-                    listUser.where((page) => page.isFavorite == true).toList();
-              } else {
-                listUserChoose =
-                    listUser.where((page) => page.isFavorite == false).toList();
+              final chooseDropDown = ref.watch(chooseProvider);
+              switch (chooseDropDown) {
+                case 'favourites':
+                  return ListViewPage(provider: favoritePageProvider);
+                case 'non-favourites':
+                  return ListViewPage(provider: notFavouritePageProvider);
+                default:
+                  return ListViewPage(provider: allPageStateProvider);
               }
-              return Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  child: ListView.builder(
-                    itemCount: listUserChoose.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(listUserChoose[index].title),
-                        subtitle: Text(listUserChoose[index].description),
-                        trailing: IconButton(
-                            onPressed: () {
-                              ref
-                                  .read(allPageStateProvider.notifier)
-                                  .changeFavorite(listUserChoose[index].id);
-                            },
-                            icon: listUserChoose[index].isFavorite
-                                ? const Icon(Icons.favorite)
-                                : const Icon(Icons.favorite_border)),
-                      );
-                    },
-                  ),
-                ),
-              );
             })
           ],
         ),
       )),
     );
   }
-
-
 }
-
-
-

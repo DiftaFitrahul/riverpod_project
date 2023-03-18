@@ -1,17 +1,17 @@
-class Page {
+class Person {
   final int id;
   final String title;
   final String description;
   bool isFavorite;
 
-  Page(
+  Person(
       {required this.title,
       required this.description,
       required this.isFavorite,
       required this.id});
 
-  Page isFavourite() {
-    return Page(
+  Person isFavourite() {
+    return Person(
         id: id,
         title: title,
         description: description,
