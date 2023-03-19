@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "449417377323-8j3i1ie892bcpdoh83obb2v9pf10d7bj.apps.googleusercontent.com",
+          "client_id": "449417377323-526ljh7iuujeisbhes7adopf4v5j89vr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.riverpod_project",
+            "certificate_hash": "54188144eaae0485b39f9f641aaaef4a519e429f"
+          }
+        },
+        {
+          "client_id": "449417377323-ejob033hdcc3e138i7fobl0j1hme4g4p.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -29,6 +37,13 @@
             {
               "client_id": "449417377323-8j3i1ie892bcpdoh83obb2v9pf10d7bj.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "449417377323-i9kgk32g4h6j3d2ne8e8s0vdc1ans4vk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.riverpodProject"
+              }
             }
           ]
         }

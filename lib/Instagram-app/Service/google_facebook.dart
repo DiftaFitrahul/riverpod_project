@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleAndFacebookAuthentication {
   final _auth = FirebaseAuth.instance;
   final _googleAuth = GoogleSignIn.standard();
+  final _facebookAuthentication = FacebookAuth.instance;
 
   Future<void> googleSignIn() async {
     final GoogleSignInAccount? googleAccount = await GoogleSignIn().signIn();
@@ -15,6 +17,17 @@ class GoogleAndFacebookAuthentication {
     try {
       await _auth.signInWithCredential(credential);
     } on FirebaseException {
+      rethrow;
+    }
+  }
+
+  Future<void> signInFacebook() async {
+    final LoginResult loginResult = await _facebookAuthentication.login();
+    final OAuthCredential facebookAuthCredential =
+        FacebookAuthProvider.credential(loginResult.accessToken!.token);
+    try {
+      await _auth.signInWithCredential(facebookAuthCredential);
+    } on FirebaseAuthException {
       rethrow;
     }
   }
