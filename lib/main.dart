@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_project/firebase_options.dart';
 
-import '../app-6-FILTER-StateNotifier/Page/home_page.dart';
-import '../CRUD_changenotifier/page/home_page.dart';
+import '../Instagram-app/Page/login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePageApp6(),
+      home: LoginPage(),
     );
   }
 }
