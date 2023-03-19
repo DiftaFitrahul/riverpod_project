@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "449417377323",
+    "project_id": "instagram-riverpod-valdad",
+    "storage_bucket": "instagram-riverpod-valdad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:449417377323:android:b6b537cf66cbe4947b5c6e",
+        "android_client_info": {
+          "package_name": "com.example.riverpod_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "449417377323-8j3i1ie892bcpdoh83obb2v9pf10d7bj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTcN7WAsz4nl1bTd0ocQ5i0X8atd7qlr4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "449417377323-8j3i1ie892bcpdoh83obb2v9pf10d7bj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
