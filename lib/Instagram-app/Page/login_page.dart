@@ -2,6 +2,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_project/Instagram-app/provider/auth_provider.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -34,24 +36,30 @@ class LoginPage extends StatelessWidget {
                 )),
             Padding(
                 padding: const EdgeInsets.only(top: 10, bottom: 10),
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    padding: const EdgeInsets.all(20),
-                    color: Colors.grey.withOpacity(0.4),
-                    child: Row(
-                      children: const [
-                        Icon(
-                          Icons.facebook,
-                          size: 40,
-                          color: Colors.blue,
-                        ),
-                        SizedBox(
-                          width: 6,
-                        ),
-                        Text('Facebook')
-                      ],
-                    ),
+                child: Consumer(
+                  builder: (_, ref, __) => GestureDetector(
+                    onTap: () {
+                      ref.read(googleSignInProvider.notifier).signInGoogle();
+                    },
+                    child: (ref.watch(googleSignInProvider) == false)
+                        ? Container(
+                            padding: const EdgeInsets.all(20),
+                            color: Colors.grey.withOpacity(0.4),
+                            child: Row(
+                              children: const [
+                                Icon(
+                                  Icons.facebook,
+                                  size: 40,
+                                  color: Colors.blue,
+                                ),
+                                SizedBox(
+                                  width: 6,
+                                ),
+                                Text('Facebook')
+                              ],
+                            ),
+                          )
+                        : const CircularProgressIndicator(),
                   ),
                 )),
             Padding(

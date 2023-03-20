@@ -7,6 +7,8 @@ class GoogleAndFacebookAuthentication {
   final _googleAuth = GoogleSignIn.standard();
   final _facebookAuthentication = FacebookAuth.instance;
 
+  Stream<User?> get userState => _auth.authStateChanges();
+
   Future<void> googleSignIn() async {
     final GoogleSignInAccount? googleAccount = await GoogleSignIn().signIn();
     final GoogleSignInAuthentication googleAuthentication =
@@ -32,8 +34,9 @@ class GoogleAndFacebookAuthentication {
     }
   }
 
-  Future<void> signOut() async {
+  Future<void> signOutAccount() async {
     try {
+      _auth.signOut();
       _googleAuth.signOut();
     } on FirebaseException {
       rethrow;
