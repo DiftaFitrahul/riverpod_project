@@ -21,6 +21,7 @@ class AuthGoogle extends StateNotifier<bool> {
   }
 }
 
+
 final googleSignInProvider =
     StateNotifierProvider<AuthGoogle, bool>((ref) => AuthGoogle(ref));
 

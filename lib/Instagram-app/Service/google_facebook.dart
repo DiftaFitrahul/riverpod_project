@@ -6,6 +6,7 @@ class GoogleAndFacebookAuthentication {
   final _auth = FirebaseAuth.instance;
   final _googleAuth = GoogleSignIn.standard();
   final _facebookAuthentication = FacebookAuth.instance;
+  String? get idUser => _auth.currentUser?.uid;
 
   Stream<User?> get userState => _auth.authStateChanges();
 
