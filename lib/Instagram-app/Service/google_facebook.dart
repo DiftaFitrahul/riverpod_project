@@ -38,6 +38,7 @@ class GoogleAndFacebookAuthentication {
     try {
       _auth.signOut();
       _googleAuth.signOut();
+      _facebookAuthentication.logOut();
     } on FirebaseException {
       rethrow;
     }

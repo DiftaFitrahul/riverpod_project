@@ -46,16 +46,15 @@ class LoginPage extends StatelessWidget {
                             padding: const EdgeInsets.all(20),
                             color: Colors.grey.withOpacity(0.4),
                             child: Row(
-                              children: const [
-                                Icon(
-                                  Icons.facebook,
-                                  size: 40,
-                                  color: Colors.blue,
+                              children: [
+                                Image.asset(
+                                  'assets/Google.png',
+                                  width: 31,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 6,
                                 ),
-                                Text('Facebook')
+                                const Text('Google')
                               ],
                             ),
                           )
@@ -64,24 +63,30 @@ class LoginPage extends StatelessWidget {
                 )),
             Padding(
                 padding: const EdgeInsets.only(top: 10, bottom: 80),
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    padding: const EdgeInsets.all(20),
-                    color: Colors.grey.withOpacity(0.4),
-                    child: Row(
-                      children: [
-                        Image.asset(
-                          'assets/Google.png',
-                          width: 35,
-                        ),
-                        const SizedBox(
-                          width: 6,
-                        ),
-                        const Text('Google')
-                      ],
+                child: Consumer(
+                  builder: (_, ref, __) => GestureDetector(
+                    onTap: () {
+                      
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(20),
+                      color: Colors.grey.withOpacity(0.4),
+                      child: Row(
+                        children: const [
+                          Icon(
+                            Icons.facebook,
+                            size: 40,
+                            color: Colors.blue,
+                          ),
+                          SizedBox(
+                            width: 6,
+                          ),
+                          Text('Facebook')
+                        ],
+                      ),
                     ),
                   ),
+                  
                 )),
             const Text("Don't have an account?",
                 style: TextStyle(fontSize: 16)),
