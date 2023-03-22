@@ -66,27 +66,32 @@ class LoginPage extends StatelessWidget {
                 child: Consumer(
                   builder: (_, ref, __) => GestureDetector(
                     onTap: () {
-                      
+                      ref
+                          .read(facebookSignInProvider.notifier)
+                          .signinFacebook()
+                          .catchError((error) => ScaffoldMessenger.of(context)
+                              .showSnackBar(SnackBar(content: Text(error))));
                     },
-                    child: Container(
-                      padding: const EdgeInsets.all(20),
-                      color: Colors.grey.withOpacity(0.4),
-                      child: Row(
-                        children: const [
-                          Icon(
-                            Icons.facebook,
-                            size: 40,
-                            color: Colors.blue,
+                    child: ref.watch(facebookSignInProvider)
+                        ? const CircularProgressIndicator()
+                        : Container(
+                            padding: const EdgeInsets.all(20),
+                            color: Colors.grey.withOpacity(0.4),
+                            child: Row(
+                              children: const [
+                                Icon(
+                                  Icons.facebook,
+                                  size: 40,
+                                  color: Colors.blue,
+                                ),
+                                SizedBox(
+                                  width: 6,
+                                ),
+                                Text('Facebook')
+                              ],
+                            ),
                           ),
-                          SizedBox(
-                            width: 6,
-                          ),
-                          Text('Facebook')
-                        ],
-                      ),
-                    ),
                   ),
-                  
                 )),
             const Text("Don't have an account?",
                 style: TextStyle(fontSize: 16)),

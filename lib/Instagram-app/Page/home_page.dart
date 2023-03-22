@@ -14,7 +14,16 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
+            const SizedBox(
+              height: 50,
+            ),
             const Text('Hello Buddy'),
+            Consumer(
+              builder: (context, ref, child) {
+                final idUser = ref.watch(userState).value!.uid;
+                return Text('Your id : $idUser');
+              },
+            ),
             const SizedBox(
               height: 50,
             ),

@@ -36,9 +36,9 @@ class GoogleAndFacebookAuthentication {
 
   Future<void> signOutAccount() async {
     try {
-      _auth.signOut();
-      _googleAuth.signOut();
-      _facebookAuthentication.logOut();
+      await _auth.signOut();
+      await _googleAuth.signOut();
+      await _facebookAuthentication.logOut();
     } on FirebaseException {
       rethrow;
     }
