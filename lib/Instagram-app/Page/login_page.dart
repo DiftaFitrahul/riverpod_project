@@ -70,7 +70,8 @@ class LoginPage extends StatelessWidget {
                           .read(facebookSignInProvider.notifier)
                           .signinFacebook()
                           .catchError((error) => ScaffoldMessenger.of(context)
-                              .showSnackBar(SnackBar(content: Text(error))));
+                              .showSnackBar(
+                                  SnackBar(content: Text(error.toString()))));
                     },
                     child: ref.watch(facebookSignInProvider)
                         ? const CircularProgressIndicator()
