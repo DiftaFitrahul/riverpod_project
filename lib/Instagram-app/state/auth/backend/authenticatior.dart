@@ -6,6 +6,7 @@ import 'package:riverpod_project/Instagram-app/state/post/typedefs/user_id.dart'
 import '../constant/constant.dart';
 
 class Authenticator {
+  const Authenticator();
   UserId? get userId => FirebaseAuth.instance.currentUser?.uid;
   bool get isAlreadyLoggedIn => userId != null;
   String? get displayName => FirebaseAuth.instance.currentUser?.displayName;
@@ -53,13 +54,13 @@ class Authenticator {
       return AuthResult.aborted;
     }
     final googleAuth = await signInAccount.authentication;
-    final oauthCredential =  GoogleAuthProvider.credential(accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
-    try{
+    final oauthCredential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+    try {
       await FirebaseAuth.instance.signInWithCredential(oauthCredential);
       return AuthResult.success;
-    }on FirebaseAuthException {
+    } on FirebaseAuthException {
       return AuthResult.failure;
     }
-    
   }
 }
