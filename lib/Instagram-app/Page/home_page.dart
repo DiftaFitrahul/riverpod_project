@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_project/Instagram-app/provider/auth_provider.dart';
+
+import '../state/auth/notifiers/auth_state_notifier.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -20,7 +21,7 @@ class HomePage extends StatelessWidget {
             const Text('Hello Buddy'),
             Consumer(
               builder: (context, ref, child) {
-                final idUser = ref.watch(userState).value!.uid;
+                final idUser = ref.watch(authStateNotifierProvider).userId;
                 return Text('Your id : $idUser');
               },
             ),
@@ -30,7 +31,7 @@ class HomePage extends StatelessWidget {
             Consumer(
                 builder: (context, ref, child) => ElevatedButton(
                     onPressed: () {
-                      ref.read(authProvider).signOutAccount();
+                      ref.read(authStateNotifierProvider.notifier).logOut();
                     },
                     child: const Text('LogOut')))
           ],

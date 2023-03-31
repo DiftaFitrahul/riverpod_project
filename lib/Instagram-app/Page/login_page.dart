@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_project/Instagram-app/provider/auth_provider.dart';
+import 'package:riverpod_project/Instagram-app/state/auth/notifiers/auth_state_notifier.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -39,10 +39,13 @@ class LoginPage extends StatelessWidget {
                 child: Consumer(
                   builder: (_, ref, __) => GestureDetector(
                     onTap: () {
-                      ref.read(googleSignInProvider.notifier).signInGoogle();
+                      ref
+                          .read(authStateNotifierProvider.notifier)
+                          .logInWithGoogle();
                     },
-                    child: (ref.watch(googleSignInProvider) == false)
-                        ? Container(
+                    child: (ref.watch(authStateNotifierProvider).isLoading)
+                        ? const CircularProgressIndicator()
+                        : Container(
                             padding: const EdgeInsets.all(20),
                             color: Colors.grey.withOpacity(0.4),
                             child: Row(
@@ -57,8 +60,7 @@ class LoginPage extends StatelessWidget {
                                 const Text('Google')
                               ],
                             ),
-                          )
-                        : const CircularProgressIndicator(),
+                          ),
                   ),
                 )),
             Padding(
@@ -67,13 +69,10 @@ class LoginPage extends StatelessWidget {
                   builder: (_, ref, __) => GestureDetector(
                     onTap: () {
                       ref
-                          .read(facebookSignInProvider.notifier)
-                          .signinFacebook()
-                          .catchError((error) => ScaffoldMessenger.of(context)
-                              .showSnackBar(
-                                  SnackBar(content: Text(error.toString()))));
+                          .read(authStateNotifierProvider.notifier)
+                          .loginWithFacebook();
                     },
-                    child: ref.watch(facebookSignInProvider)
+                    child: ref.watch(authStateNotifierProvider).isLoading
                         ? const CircularProgressIndicator()
                         : Container(
                             padding: const EdgeInsets.all(20),

@@ -34,4 +34,20 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
       state = state.copiedWithIsLoading(false);
     }
   }
+
+  Future<void> loginWithFacebook() async{
+    state = state.copiedWithIsLoading(true);
+    final result = await _authenticator.loginWithFacebook();
+    final userId = _authenticator.userId;
+    if(result == AuthResult.success && userId != null) {
+      state = AuthState(
+          result: result,
+          isLoading: false,
+          userId: userId);
+    } else {
+      state = state.copiedWithIsLoading(false);
+    }
+  }
 }
+
+final authStateNotifierProvider = StateNotifierProvider<AuthStateNotifier, AuthState>((ref) => AuthStateNotifier());

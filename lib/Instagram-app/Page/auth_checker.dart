@@ -1,25 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_project/Instagram-app/state/auth/notifiers/auth_state_notifier.dart';
+import '../state/auth/models/auth_result.dart';
 import './home_page.dart';
 
 import '../Page/login_page.dart';
-import '../provider/auth_provider.dart';
 
 class AuthChecker extends ConsumerWidget {
   const AuthChecker({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(userState);
-    return user.when(
-        data: (user) {
-          if (user != null) {
-            return const HomePage();
-          } else {
-            return const LoginPage();
-          }
-        },
-        error: (error, __) => const LoginPage(),
-        loading: () => const CircularProgressIndicator());
+    final user = ref.watch(authStateNotifierProvider);
+    if(user.result == AuthResult.success && user.userId != null) {
+      return const HomePage();
+    } else {
+      return const LoginPage();
+    }
   }
 }
