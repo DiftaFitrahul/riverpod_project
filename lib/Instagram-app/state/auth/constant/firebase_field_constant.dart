@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart' show immutable;
-import 'package:riverpod_project/Instagram-app/state/post/typedefs/user_id.dart';
 
 @immutable
 class FirebaseFieldConstant{
