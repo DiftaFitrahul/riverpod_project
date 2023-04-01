@@ -1,11 +1,14 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_project/Instagram-app/state/auth/backend/authenticatior.dart';
-import 'package:riverpod_project/Instagram-app/state/auth/models/auth_result.dart';
+import 'package:riverpod_project/Instagram-app/state/post/typedefs/user_id.dart';
 
+import '../backend/authenticatior.dart';
+import '../models/auth_result.dart';
+import '../../user_info/backend/user_info_storage.dart';
 import '../models/auth_state.dart';
 
 class AuthStateNotifier extends StateNotifier<AuthState> {
   final _authenticator = const Authenticator();
+  final _userInfo = const UserInfoStorage();
   AuthStateNotifier() : super(const AuthState.unknown()) {
     if (_authenticator.isAlreadyLoggedIn) {
       state = AuthState(
@@ -25,29 +28,32 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
     state = state.copiedWithIsLoading(true);
     final result = await _authenticator.loginWithGoole();
     final userId = _authenticator.userId;
-    if(result == AuthResult.success && userId != null) {
-      state = AuthState(
-          result: result,
-          isLoading: false,
-          userId: userId);
+    if (result == AuthResult.success && userId != null) {
+      await saveUserInfo(userId: userId);
+      state = AuthState(result: result, isLoading: false, userId: userId);
     } else {
       state = state.copiedWithIsLoading(false);
     }
   }
 
-  Future<void> loginWithFacebook() async{
+  Future<void> loginWithFacebook() async {
     state = state.copiedWithIsLoading(true);
     final result = await _authenticator.loginWithFacebook();
     final userId = _authenticator.userId;
-    if(result == AuthResult.success && userId != null) {
-      state = AuthState(
-          result: result,
-          isLoading: false,
-          userId: userId);
+    if (result == AuthResult.success && userId != null) {
+      await saveUserInfo(userId: userId);
+      state = AuthState(result: result, isLoading: false, userId: userId);
     } else {
       state = state.copiedWithIsLoading(false);
     }
   }
+
+  Future<void> saveUserInfo({required UserId userId}) => _userInfo.saveUserInfo(
+      userId: userId,
+      displayName: _authenticator.displayName ?? '',
+      email: _authenticator.email);
 }
 
-final authStateNotifierProvider = StateNotifierProvider<AuthStateNotifier, AuthState>((ref) => AuthStateNotifier());
+final authStateNotifierProvider =
+    StateNotifierProvider<AuthStateNotifier, AuthState>(
+        (ref) => AuthStateNotifier());

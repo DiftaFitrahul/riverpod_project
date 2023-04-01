@@ -8,7 +8,7 @@ import 'package:riverpod_project/Instagram-app/state/user_info/models/user_info_
 @immutable
 class UserInfoStorage {
   const UserInfoStorage();
-  Future<bool> userInfoStorage({
+  Future<bool> saveUserInfo({
     required UserId userId,
     required String displayName,
     required String? email,
