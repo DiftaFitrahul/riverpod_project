@@ -54,6 +54,4 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
       email: _authenticator.email);
 }
 
-final authStateNotifierProvider =
-    StateNotifierProvider<AuthStateNotifier, AuthState>(
-        (ref) => AuthStateNotifier());
+

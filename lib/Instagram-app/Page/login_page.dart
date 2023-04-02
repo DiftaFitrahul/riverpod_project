@@ -5,6 +5,8 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_project/Instagram-app/state/auth/notifiers/auth_state_notifier.dart';
 
+import '../state/auth/providers/auth_state_provider.dart';
+
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 

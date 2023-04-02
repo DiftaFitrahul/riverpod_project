@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../state/auth/notifiers/auth_state_notifier.dart';
+import '../state/auth/providers/auth_state_provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
