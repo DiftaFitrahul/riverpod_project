@@ -31,8 +31,8 @@ class HomePage extends StatelessWidget {
             ),
             Consumer(
                 builder: (context, ref, child) => ElevatedButton(
-                    onPressed: () {
-                      ref.read(authStateNotifierProvider.notifier).logOut();
+                    onPressed: () async{
+                      await ref.read(authStateNotifierProvider.notifier).logOut();
                     },
                     child: const Text('LogOut')))
           ],
