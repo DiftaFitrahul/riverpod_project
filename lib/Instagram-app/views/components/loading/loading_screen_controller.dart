@@ -13,3 +13,4 @@ class LoadingScreenController {
     required this.updateLoadingScreen,
   });
 }
+ 
