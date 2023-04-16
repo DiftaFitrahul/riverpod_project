@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_project/Instagram-app/state/auth/notifiers/auth_state_notifier.dart';
+import 'package:riverpod_project/Instagram-app/views/components/loading/loading_screen.dart';
 
 import '../state/auth/providers/auth_state_provider.dart';
 
@@ -44,6 +45,7 @@ class LoginPage extends StatelessWidget {
                       ref
                           .read(authStateNotifierProvider.notifier)
                           .logInWithGoogle();
+                      //LoadingScreen.instance().show(context: context);
                     },
                     child: (ref.watch(authStateNotifierProvider).isLoading)
                         ? const CircularProgressIndicator()
