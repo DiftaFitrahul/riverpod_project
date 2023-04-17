@@ -53,5 +53,3 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
       displayName: _authenticator.displayName ?? '',
       email: _authenticator.email);
 }
-
-
