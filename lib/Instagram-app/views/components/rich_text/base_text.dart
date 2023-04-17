@@ -15,9 +15,13 @@ class BaseText {
 
   factory BaseText.linkText({
     required String text,
-    required VoidCallback callback,
+    required VoidCallback onTapped,
     TextStyle? style = const TextStyle(
         color: Colors.blue, decoration: TextDecoration.underline),
   }) =>
-      LinkText(text: text, callback: callback, style: style);
+      LinkText(
+        text: text,
+        callback: onTapped,
+        style: style,
+      );
 }
