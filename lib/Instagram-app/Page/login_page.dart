@@ -47,9 +47,7 @@ class LoginPage extends StatelessWidget {
                           .logInWithGoogle();
                       //LoadingScreen.instance().show(context: context);
                     },
-                    child: (ref.watch(authStateNotifierProvider).isLoading)
-                        ? const CircularProgressIndicator()
-                        : Container(
+                    child:  Container(
                             padding: const EdgeInsets.all(20),
                             color: Colors.grey.withOpacity(0.4),
                             child: Row(
@@ -76,9 +74,7 @@ class LoginPage extends StatelessWidget {
                           .read(authStateNotifierProvider.notifier)
                           .loginWithFacebook();
                     },
-                    child: ref.watch(authStateNotifierProvider).isLoading
-                        ? const CircularProgressIndicator()
-                        : Container(
+                    child:Container(
                             padding: const EdgeInsets.all(20),
                             color: Colors.grey.withOpacity(0.4),
                             child: Row(

@@ -16,7 +16,7 @@ class LoadingScreen {
     required BuildContext context,
     String message = Strings.loading,
   }) {
-    if (_controller?.updateLoadingScreen(message) ?? false) {
+    if (_controller?.updateLoadingScreen(message) != null) {
       return;
     } else {
       _controller = showOverlay(context: context, message: message);
