@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_project/Instagram-app/state/auth/notifiers/auth_state_notifier.dart';
 import 'package:riverpod_project/Instagram-app/views/components/loading/loading_screen.dart';
+import 'package:riverpod_project/Instagram-app/views/login/login_viem_signup_link.dart';
 
 import '../state/auth/providers/auth_state_provider.dart';
 
@@ -47,22 +48,22 @@ class LoginPage extends StatelessWidget {
                           .logInWithGoogle();
                       //LoadingScreen.instance().show(context: context);
                     },
-                    child:  Container(
-                            padding: const EdgeInsets.all(20),
-                            color: Colors.grey.withOpacity(0.4),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  'assets/Google.png',
-                                  width: 31,
-                                ),
-                                const SizedBox(
-                                  width: 6,
-                                ),
-                                const Text('Google')
-                              ],
-                            ),
+                    child: Container(
+                      padding: const EdgeInsets.all(20),
+                      color: Colors.grey.withOpacity(0.4),
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            'assets/Google.png',
+                            width: 31,
                           ),
+                          const SizedBox(
+                            width: 6,
+                          ),
+                          const Text('Google')
+                        ],
+                      ),
+                    ),
                   ),
                 )),
             Padding(
@@ -74,44 +75,26 @@ class LoginPage extends StatelessWidget {
                           .read(authStateNotifierProvider.notifier)
                           .loginWithFacebook();
                     },
-                    child:Container(
-                            padding: const EdgeInsets.all(20),
-                            color: Colors.grey.withOpacity(0.4),
-                            child: Row(
-                              children: const [
-                                Icon(
-                                  Icons.facebook,
-                                  size: 40,
-                                  color: Colors.blue,
-                                ),
-                                SizedBox(
-                                  width: 6,
-                                ),
-                                Text('Facebook')
-                              ],
-                            ),
+                    child: Container(
+                      padding: const EdgeInsets.all(20),
+                      color: Colors.grey.withOpacity(0.4),
+                      child: Row(
+                        children: const [
+                          Icon(
+                            Icons.facebook,
+                            size: 40,
+                            color: Colors.blue,
                           ),
+                          SizedBox(
+                            width: 6,
+                          ),
+                          Text('Facebook')
+                        ],
+                      ),
+                    ),
                   ),
                 )),
-            const Text("Don't have an account?",
-                style: TextStyle(fontSize: 16)),
-            RichText(
-                text: TextSpan(children: <TextSpan>[
-              const TextSpan(
-                  text: 'Sign up on ',
-                  style: TextStyle(color: Colors.black, fontSize: 16)),
-              TextSpan(
-                  text: 'Facebook ',
-                  style: const TextStyle(color: Colors.blue, fontSize: 16),
-                  recognizer: TapGestureRecognizer()..onTap = () {}),
-              const TextSpan(
-                  text: 'or create an account on ',
-                  style: TextStyle(color: Colors.black, fontSize: 16)),
-              TextSpan(
-                  text: 'Google',
-                  style: const TextStyle(color: Colors.blue, fontSize: 16),
-                  recognizer: TapGestureRecognizer()..onTap = () {})
-            ])),
+            const LoginViewSignUpLink()
           ],
         ),
       )),

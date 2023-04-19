@@ -10,7 +10,7 @@ class BaseText {
   const BaseText({required this.text, this.style});
 
   factory BaseText.plainText(
-          {required String text, TextStyle? style = const TextStyle()}) =>
+          {required String text, TextStyle? style = const TextStyle(color: Colors.black)}) =>
       BaseText(text: text, style: style);
 
   factory BaseText.linkText({
