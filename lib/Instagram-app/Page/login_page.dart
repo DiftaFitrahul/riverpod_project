@@ -1,101 +1,69 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_project/Instagram-app/state/auth/notifiers/auth_state_notifier.dart';
-import 'package:riverpod_project/Instagram-app/views/components/loading/loading_screen.dart';
+import 'package:riverpod_project/Instagram-app/views/constants/app_color.dart';
+import 'package:riverpod_project/Instagram-app/views/login/divider_with_margin.dart';
+import 'package:riverpod_project/Instagram-app/views/login/facebook_button.dart';
+import 'package:riverpod_project/Instagram-app/views/login/google_button.dart';
 import 'package:riverpod_project/Instagram-app/views/login/login_viem_signup_link.dart';
 
 import '../state/auth/providers/auth_state_provider.dart';
+import '../views/constants/Strings.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends ConsumerWidget {
   const LoginPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: const Center(
-          child: Text('Instagram'),
+          child: Text(Strings.appName),
         ),
       ),
       body: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 60),
-              child: Text('Welcome to Instagram',
-                  softWrap: true,
-                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold)),
-            ),
-            const Padding(
-                padding: EdgeInsets.only(top: 60),
-                child: Text(
-                  'Log into your account using one of the options below',
-                  softWrap: true,
-                )),
-            Padding(
-                padding: const EdgeInsets.only(top: 10, bottom: 10),
-                child: Consumer(
-                  builder: (_, ref, __) => GestureDetector(
-                    onTap: () {
-                      ref
-                          .read(authStateNotifierProvider.notifier)
-                          .logInWithGoogle();
-                      //LoadingScreen.instance().show(context: context);
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(20),
-                      color: Colors.grey.withOpacity(0.4),
-                      child: Row(
-                        children: [
-                          Image.asset(
-                            'assets/Google.png',
-                            width: 31,
-                          ),
-                          const SizedBox(
-                            width: 6,
-                          ),
-                          const Text('Google')
-                        ],
-                      ),
-                    ),
-                  ),
-                )),
-            Padding(
-                padding: const EdgeInsets.only(top: 10, bottom: 80),
-                child: Consumer(
-                  builder: (_, ref, __) => GestureDetector(
-                    onTap: () {
-                      ref
-                          .read(authStateNotifierProvider.notifier)
-                          .loginWithFacebook();
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(20),
-                      color: Colors.grey.withOpacity(0.4),
-                      child: Row(
-                        children: const [
-                          Icon(
-                            Icons.facebook,
-                            size: 40,
-                            color: Colors.blue,
-                          ),
-                          SizedBox(
-                            width: 6,
-                          ),
-                          Text('Facebook')
-                        ],
-                      ),
-                    ),
-                  ),
-                )),
-            const LoginViewSignUpLink()
-          ],
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const SizedBox(
+                height: 20,
+              ),
+              const Text(
+                Strings.welcomeToAppName,
+                style: TextStyle(fontSize: 40),
+              ),
+              const DividerWithMargin(),
+              const Text(Strings.logIntoYourAccount),
+              const SizedBox(
+                height: 20,
+              ),
+              TextButton(
+                style: TextButton.styleFrom(
+                    backgroundColor: AppColors.loginButtonColor,
+                    foregroundColor: AppColors.loginButtonTextColor),
+                onPressed: ref
+                    .watch(authStateNotifierProvider.notifier)
+                    .loginWithFacebook,
+                child: const FacebookButton(),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              TextButton(
+                style: TextButton.styleFrom(
+                    backgroundColor: AppColors.loginButtonColor,
+                    foregroundColor: AppColors.loginButtonTextColor),
+                onPressed: ref
+                    .watch(authStateNotifierProvider.notifier)
+                    .logInWithGoogle,
+                child: const GoogleButton(),
+              ),
+              const DividerWithMargin(),
+              const LoginViewSignUpLink()
+            ],
+          ),
         ),
       )),
     );
