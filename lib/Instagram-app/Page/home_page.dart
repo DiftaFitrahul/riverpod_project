@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../state/auth/notifiers/auth_state_notifier.dart';
 import '../state/auth/providers/auth_state_provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -31,10 +28,12 @@ class HomePage extends StatelessWidget {
             ),
             Consumer(
                 builder: (context, ref, child) => ElevatedButton(
-                    onPressed: () async{
-                      await ref.read(authStateNotifierProvider.notifier).logOut();
+                    onPressed: () async {
+                      await ref
+                          .read(authStateNotifierProvider.notifier)
+                          .logOut();
                     },
-                    child: const Text('LogOut')))
+                    child: const Text('LogOut'))),
           ],
         ),
       ),
