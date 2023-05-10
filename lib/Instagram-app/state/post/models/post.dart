@@ -40,7 +40,7 @@ class Post {
                     .firstWhere((element) => element.storageKey == entry.key):
                 entry.value
         };
-
+  //this is use for setting on post page
   bool get allowLikes => postSettings[PostSetting.allowLikes] ?? false;
   bool get allowComments => postSettings[PostSetting.allowComments] ?? false;
 }
