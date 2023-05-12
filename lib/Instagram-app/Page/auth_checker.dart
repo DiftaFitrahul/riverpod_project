@@ -6,7 +6,7 @@ import '../state/auth/models/auth_result.dart';
 import '../state/auth/providers/auth_state_provider.dart';
 import '../state/auth/providers/is_logged_in_provider.dart';
 import '../views/components/loading/loading_screen.dart';
-import './home_page.dart';
+import 'home_page.dart';
 
 import '../Page/login_page.dart';
 
