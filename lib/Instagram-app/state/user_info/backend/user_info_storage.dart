@@ -14,7 +14,7 @@ class UserInfoStorage {
     required String? email,
   }) async {
     try{
-      // firsr check if the user is already registered
+      // first check if the user is already registered
     final infoUser = await FirebaseFirestore.instance
         .collection(FirebaseCollectionName.users)
         .where(FirebaseFieldConstant.userId, isEqualTo: userId)
