@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "449417377323-r3lef39egtrtdjrngtl57fl7usamnqn8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.riverpod_project",
+            "certificate_hash": "2d36f736a455ffddb1326f9ede3c223b1de83a86"
+          }
+        },
+        {
           "client_id": "449417377323-ejob033hdcc3e138i7fobl0j1hme4g4p.apps.googleusercontent.com",
           "client_type": 3
         }

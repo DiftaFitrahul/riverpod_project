@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:riverpod_project/Instagram-app/views/components/rich_text/base_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../components/rich_text/rich_text_widget.dart';
-import '../constants/Strings.dart';
+import '../constants/strings.dart';
 
 class LoginViewSignUpLink extends StatelessWidget {
   const LoginViewSignUpLink({super.key});

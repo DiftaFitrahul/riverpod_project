@@ -4,7 +4,7 @@ import 'package:riverpod_project/Instagram-app/state/post/provider/user_post_pro
 import 'package:riverpod_project/Instagram-app/views/components/animations/empty_content_with_text_animation_view.dart';
 import 'package:riverpod_project/Instagram-app/views/components/animations/error_animation_view.dart';
 import 'package:riverpod_project/Instagram-app/views/components/post/post_grid_view.dart';
-import 'package:riverpod_project/Instagram-app/views/constants/Strings.dart';
+import 'package:riverpod_project/Instagram-app/views/constants/strings.dart';
 
 import '../../components/animations/loading_animation_view.dart';
 

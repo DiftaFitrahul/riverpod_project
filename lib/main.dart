@@ -1,11 +1,10 @@
-import 'dart:developer';
+
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_project/firebase_options.dart';
 
-import '../Instagram-app/Page/login_page.dart';
 import 'Instagram-app/Page/auth_checker.dart';
 
 void main() async {

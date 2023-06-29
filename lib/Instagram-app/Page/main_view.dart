@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../views/constants/Strings.dart';
+import '../views/constants/strings.dart';
 
 class MainView extends ConsumerStatefulWidget {
   const MainView({super.key});

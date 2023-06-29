@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:riverpod_project/Instagram-app/views/constants/app_color.dart';
 
-import '../constants/Strings.dart';
+import '../constants/strings.dart';
 
 class GoogleButton extends StatelessWidget {
   const GoogleButton({super.key});

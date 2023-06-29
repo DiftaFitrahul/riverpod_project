@@ -7,7 +7,7 @@ import 'package:riverpod_project/Instagram-app/views/login/google_button.dart';
 import 'package:riverpod_project/Instagram-app/views/login/login_viem_signup_link.dart';
 
 import '../state/auth/providers/auth_state_provider.dart';
-import '../views/constants/Strings.dart';
+import '../views/constants/strings.dart';
 
 class LoginPage extends ConsumerWidget {
   const LoginPage({super.key});
