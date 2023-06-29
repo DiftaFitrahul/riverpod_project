@@ -38,7 +38,7 @@ class Post {
           for (final entry in json[PostKey.postSettings].entries)
             PostSetting.values
                     .firstWhere((element) => element.storageKey == entry.key):
-                entry.value
+               entry.value 
         };
   //this is use for setting on post page
   bool get allowLikes => postSettings[PostSetting.allowLikes] ?? false;

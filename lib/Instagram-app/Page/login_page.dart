@@ -44,7 +44,7 @@ class LoginPage extends ConsumerWidget {
                     backgroundColor: AppColors.loginButtonColor,
                     foregroundColor: AppColors.loginButtonTextColor),
                 onPressed: ref
-                    .watch(authStateNotifierProvider.notifier)
+                    .read(authStateNotifierProvider.notifier)
                     .loginWithFacebook,
                 child: const FacebookButton(),
               ),
@@ -56,7 +56,7 @@ class LoginPage extends ConsumerWidget {
                     backgroundColor: AppColors.loginButtonColor,
                     foregroundColor: AppColors.loginButtonTextColor),
                 onPressed: ref
-                    .watch(authStateNotifierProvider.notifier)
+                    .read(authStateNotifierProvider.notifier)
                     .logInWithGoogle,
                 child: const GoogleButton(),
               ),
